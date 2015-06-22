@@ -7,7 +7,7 @@
     <input type="text" placeholder="Part Name" name="part_name">
     <select name="category">
       <% Category.all.each do |category| %>
-        <option value="<%= category.id %>"><%= category.category %></option>
+        <option value="<%= category.category %>"><%= category.category %></option>
       <% end %>
     </select>
       <input type="text" placeholder="Zip Code" name="zip_code">
