@@ -1,0 +1,17 @@
+
+<p>Select which category.</p>
+
+<ul>  
+<% Category.all.each do |object| %>
+ <li>
+   <a href="/search_parts_choice/<%= object.id %>">
+     
+     <%= object.category %>
+     
+     
+   </a></li>
+<% end %>
+</ul> 
+  <p><a href="home">Nevermind, return home.</a></p>
+
+

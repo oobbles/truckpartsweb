@@ -1,0 +1,16 @@
+
+<p>Select which zipcode.</p>
+
+<ul>  
+<% ZipCode.all.each do |object| %>
+ <li>
+   <a href="/search_zip_parts_choice/<%= object.id %>">
+     
+     <%= object.zip_code %>
+     
+     
+   </a></li>
+<% end %>
+</ul> 
+  <p><a href="home">Nevermind, return home.</a></p>
+

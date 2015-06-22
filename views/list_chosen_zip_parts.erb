@@ -1,0 +1,15 @@
+<% answer=ZipCode.new(params["zip"].to_i)%>
+Here are the <%=ZipCode.find(answer.id).zip_code%> part listings.
+   
+   
+
+    
+    <ul>  
+    
+    <%answer.truck_parts.each do |object| %>
+     <li>
+       <%= object%>
+     </li>
+    <% end %>
+    </ul> 
+ <p><a href="../search_parts_zip_code">Search again?</a></p>    
