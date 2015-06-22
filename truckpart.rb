@@ -63,8 +63,8 @@ class TruckPart
     #
     # Returns TruckPart object
   	def self.add(part_name, category, zip_code, quantity=1)
-      temp_truck_part = TruckPart.new(nil, part_name, nil, nil, quantity=1)
       
+      temp_truck_part = TruckPart.new(nil, part_name, nil, nil, quantity=1)
       return false if zip_code.to_i == 0
   		zip_id = ZipCode.get_id(zip_code)
       temp_truck_part.zip_code_id = zip_id

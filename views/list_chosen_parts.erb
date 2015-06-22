@@ -1,16 +1,16 @@
-<% answer=Category.new(params["number"].to_i)%>
-Here are the <%=Category.find(answer.id).category%> part listings.
-   
-   
+<% x = Category.find(params["number"].to_i)%>
+Here are the <%= x.category %>listings 
+
 
     
     <ul>  
     
-    <%answer.truck_parts.each do |object| %>
+    <%x.truck_parts.each do |object| %>
      <li>
        <%= object%>
      </li>
     <% end %>
     </ul> 
     <p><a href="../search_parts_category">Search again?</a></p>
+    
     

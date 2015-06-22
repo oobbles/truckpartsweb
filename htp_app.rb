@@ -34,7 +34,17 @@ get "/list_parts" do
 end
 
 get "/add_parts" do
-  "Hello let's ADD Parts"
+  erb :"add_parts"
+end
+
+get "/parts_added" do
+  
+  if TruckPart.add(params)
+    erb :"parts_added"  
+  else
+    "There was an error adding your part."
+  end
+  
 end
 
 get "/search_parts_category" do
@@ -52,5 +62,6 @@ end
  get "/search_zip_parts_choice/:zip" do
    erb :"list_chosen_zip_parts"
 end
+
 
 

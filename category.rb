@@ -1,43 +1,46 @@
+require_relative "database_methods.rb"
 
 class Category
+  extend DatabaseClassMethods
+  
   attr_reader :id
   attr_accessor :category
   
   # Initializes a new category object
   #
   # id (optional) - Integer of the category record in categories table
-  def initialize(id=nil, category=nil)
-    @id = id
-    @category = category
+  def initialize(options = {})
+    @id = options["id"]
+    @category = options["category"]
   end
 
   # Get all category records from the category table
   #
   # Returns an Array of Category Objects
-  def self.all
-    results = CONNECTION.execute('SELECT * FROM categories;')
-    results_as_objects = []
-    
-    results.each do |result_hash|
-      results_as_objects << Category.new(result_hash["id"], result_hash["category"])
-    end
-    return results_as_objects
-  end
-  
-  
-  # Find a category based on its ID.
+  # def self.all
+  #   results = CONNECTION.execute('SELECT * FROM categories;')
+  #   results_as_objects = []
   #
-  # id - The Integer ID of the category to return.
+  #   results.each do |result_hash|
+  #     results_as_objects << Category.new(result_hash["id"], result_hash["category"])
+  #   end
+  #   return results_as_objects
+  # end
   #
-  # Returns a Category object.
-  def self.find(id)
-    @id = id
-    
-    result = CONNECTION.execute("SELECT * FROM categories WHERE id = #{@id};").first
-    temp_category = result["category"]
-    
-    Category.new(id, temp_category)
-  end
+  #
+  # # Find a category based on its ID.
+  # #
+  # # id - The Integer ID of the category to return.
+  # #
+  # # Returns a Category object.
+  # def self.find(id)
+  #   @id = id
+  #
+  #   result = CONNECTION.execute("SELECT * FROM categories WHERE id = #{@id};").first
+  #   temp_category = result["category"]
+  #
+  #   Category.new(id, temp_category)
+  # end
 
   # Utility method gets category id and if none exists, returns false 
   #

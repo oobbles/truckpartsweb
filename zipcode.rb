@@ -1,5 +1,5 @@
+
 require_relative "database_methods.rb"
-#require_relative "database_instance_methods.rb"
 
 class ZipCode
   extend DatabaseClassMethods
@@ -12,39 +12,39 @@ class ZipCode
   # id (optional) - Integer of the zipcode record in zip_codes table
   #
   # zip_code (optional) - Integer of the zip_code in the zip_codes table
-  def initialize(id=nil, zipcode=nil)
-    @id = id
-    @zip_code = zipcode
+  def initialize(options = {})
+    @id = options["id"]
+    @zip_code = options["zip_code"]
   end
   
   # Get all zip code records from the ZipCode table
   #
   # Returns an Array of ZipCode Objects
   
-  def self.all
-    results = CONNECTION.execute('SELECT * FROM zip_codes;')
-    results_as_objects = []
-
-    results.each do |result_hash|
-      results_as_objects << ZipCode.new(result_hash["id"], result_hash["zip_code"])
-    end
-    return results_as_objects
-  end
+  # def self.all
+  #   results = CONNECTION.execute('SELECT * FROM zip_codes;')
+  #   results_as_objects = []
+  #
+  #   results.each do |result_hash|
+  #     results_as_objects << ZipCode.new(result_hash["id"], result_hash["zip_code"])
+  #   end
+  #   return results_as_objects
+  # end
   #
   # Find a zip code based on its ID.
   #
   # id - The Integer ID of the zipcode to return.
   #
   #Returns a ZipCode object.
-  def self.find(id)
-    @id = id
-
-    result = CONNECTION.execute("SELECT * FROM zip_codes WHERE id = #{@id};").first
-    temp_zip_code = result["zip_code"]
-
-    ZipCode.new(id, temp_zip_code)
-  end
-  
+  # def self.find(id)
+  #   @id = id
+  #
+  #   result = CONNECTION.execute("SELECT * FROM zip_codes WHERE id = #{@id};").first
+  #   temp_zip_code = result["zip_code"]
+  #
+  #   ZipCode.new(id, temp_zip_code)
+  # end
+  #
   # def self.find_as_object(id)
   #   result = ZipCode.find(id).first
   #   ZipCode.new(result)

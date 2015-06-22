@@ -1,0 +1,17 @@
+
+
+  <h1>New Part Entry</h1>
+  <p>Please enter the details of the part you want to enter!</p>
+  
+  <form action="/parts_added">
+    <input type="text" placeholder="Part Name" name="part_name">
+    <select name="category">
+      <% Category.all.each do |category| %>
+        <option value="<%= category.id %>"><%= category.category %></option>
+      <% end %>
+    </select>
+      <input type="text" placeholder="Zip Code" name="zip_code">
+    
+    
+    <button type="submit">Add Part</button>
+  </form>
