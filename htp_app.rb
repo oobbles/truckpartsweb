@@ -38,11 +38,15 @@ get "/add_parts" do
 end
 
 get "/parts_added" do
-  
-  if TruckPart.add(params['part_name'], params['category'], params['zip_code'])
+  new_part = TruckPart.add(params['part_name'], params['category'], params['zip_code'])
+  if new_part
+    if new_part.updated
+      @message = "your part was incremented."
+    else
+      @message = "you made a new entry."
+    end
     erb :"parts_added"  
   else
-    binding.pry
     "There was an error adding your part."
   end
   

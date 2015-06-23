@@ -1,22 +1,16 @@
-<p>"Hello, Let's List Parts"</p>
+<p>Here are the parts currently in our database:</p>
 
-  
-  <p>Here are the parts:</p>
-  
-  <!-- <ul>
-    <% TruckPart.all.each do |part| %>
-      <li><%= part.part_name %>   <%= part.category %> </li>
-    <% end %>
-  </ul>  -->
-  
   <table border="1" style="width:50%">
+    
     <% TruckPart.all.each do |part| %>
+
     <tr>
-     <td> <%= part.part_name %></td>  
-     <td> <%= part.category %> </td>
-     <td> <%= part.zip_code %> </td>
-   </tr>
+      <td> <%= part.part_name %></td>  
+      <td> <%= part.category %> </td>
+      <td> <%= part.zip_code %> </td>
+    </tr>
     <% end %>
-  </table>
-  <p><a href="home">Return home?</a></p>
   
+  </table>
+
+<p><a href="home">Return home?</a></p>

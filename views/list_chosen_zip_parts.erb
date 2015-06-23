@@ -1,14 +1,14 @@
-
 <% x  =ZipCode.find(params["zip"].to_i) %>
+
 Here are the <%=x.zip_code%> part listings.
-    
-    <ul>  
+
+  <ul>  
     <% x.truck_parts.each do |object| %>
-     <li>
-       <%= object%>
-     </li>
+    <li>
+      <%= object%>
+    </li>
     <% end %>
-    </ul> 
- <p><a href="../search_parts_zip_code">Search again?</a></p>    
- 
- 
+  </ul> 
+
+<p><a href="../search_parts_zip_code">Search again?</a></p>    
+

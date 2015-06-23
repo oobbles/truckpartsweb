@@ -1,5 +1,5 @@
 class TruckPart
-  attr_accessor :id, :part_name, :category_id, :zip_code_id, :quantity
+  attr_accessor :id, :part_name, :category_id, :zip_code_id, :quantity, :updated
     
     # Initializes a new truck_part object.
     #
@@ -19,6 +19,7 @@ class TruckPart
       @category_id = category_id
       @zip_code_id = zip_code_id
       @quantity = quantity
+      @updated = false
     end
 
     # Get all part records from the database.
@@ -83,6 +84,7 @@ class TruckPart
         temp_truck_part.id = existing_part_hash["id"]
         temp_truck_part.increment_quantity(quantity)
         temp_truck_part.save
+        temp_truck_part.updated = true
   		else
         sql = "INSERT INTO truck_parts (part_name, category_id, zip_code_id, 
         quantity) VALUES ('#{part_name}', #{cat_id}, #{zip_id}, #{quantity});"
